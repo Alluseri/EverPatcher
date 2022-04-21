@@ -31,9 +31,6 @@
 						"cancelFromDamageTypes": ["BuffDamage"],
 						"cancelFromDamageFlags": ["Sneak", "IgnoreSkin"]
 					}]
-				],
-				"behaviors": [
-					["push", ["RemoveBuffs"]]
 				]
 			}
 		}
