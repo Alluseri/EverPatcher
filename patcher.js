@@ -5,7 +5,6 @@ var __PATCHES = null;
 console.log("/json patcher by Nekoseri/");
 console.log("Reading patches...");
 __PATCHES = JSON.parse(fs.readFileSync("__PATCHES.json", "utf8").toString());
-console.log("Working...");
 
 function setByChain(content, chain, set) {
 	var byref = content;
@@ -38,7 +37,7 @@ function runRecursivePatches(content, patch, chain) {
 			var resx = patch[xk];
 			if (resx[0] == "set") {
 				setByChain(content, chcl, resx[1]);
-				console.log("Applied singular 'set' patch to "+xk);
+				console.log(">>> Applied singular 'set' patch to "+xk);
 			} else {
 				var og = getByChain(content, chcl);
 				for (var res_ in resx) {
@@ -51,6 +50,18 @@ function runRecursivePatches(content, patch, chain) {
 							var rtx = rt[pk];
 							for (var pkx in rtx) {
 								sym[pk].push(rtx[pkx]);
+							}
+						}
+						break;
+					case "injectDelete":
+						var entireObject = fi(og, res[1]);
+						var toDelete = res[2];
+						for (var key in toDelete) {
+							var targetArray = entireObject[key];
+							for (var js in toDelete[key]) {
+								for (var x in targetArray) {
+									if (targetArray[x] == toDelete[key][js]) targetArray.splice(x, 1);
+								}
 							}
 						}
 						break;
@@ -70,7 +81,7 @@ function runRecursivePatches(content, patch, chain) {
 						}
 						break;
 					}
-					console.log("Applied '"+res[0]+"' patch to "+xk);
+					console.log(">>> Applied '"+res[0]+"' patch to "+xk);
 				}
 			}
 		}
