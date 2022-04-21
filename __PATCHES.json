@@ -1,0 +1,47 @@
+{
+	"Monster": {
+		"Monster": [
+			["set", "name:Hero01", {
+				"activeSkills": {
+					"0": "HealAttackAHorseIdol",
+					"1": "ZeroAnnihilatorOniSGBoss"
+				},
+				"passives": {
+					"0": "GetTurnSkinA",
+					"1": "AttackGiveTurnChance"
+				},
+				"cost": 2,
+				"baseAttack": 8888888,
+				"baseMaxHp": 9999999,
+				"speed": 1337420,
+				"aiTargetPickWeight": 99999,
+				"goldMultiplier": 2000,
+				"consolationMultiplier": 2000
+			}]
+		]
+	},
+	"Buff": {
+		"Buff": {
+			"GetTurnSkinA": {
+				"behaviorOverrides": [
+					["injectPush", -1, {
+						"stackNamesToBlock": ["Sleep"]
+					}],
+					["delete", 0, "cancelFromDamageTypes"],
+					["delete", 0, "cancelFromDamageFlags"]
+				],
+				"behaviors": [
+					["push", ["RemoveBuffs"]]
+				]
+			}
+		}
+	},
+	"AbilityConfig": {
+		"AbilityConfig": {
+			"ZeroAnnihilatorOniSGBoss": {
+				"useCondition": ["set", "HPAbove75Percent"],
+				"abilityEffect": ["set", "MidPoison1"]
+			}
+		}
+	}
+}
