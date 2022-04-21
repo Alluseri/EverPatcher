@@ -27,8 +27,10 @@
 					["injectPush", -1, {
 						"stackNamesToBlock": ["Sleep"]
 					}],
-					["delete", 0, "cancelFromDamageTypes"],
-					["delete", 0, "cancelFromDamageFlags"]
+					["injectDelete", 0, {
+						"cancelFromDamageTypes": ["BuffDamage"],
+						"cancelFromDamageFlags": ["Sneak", "IgnoreSkin"]
+					}]
 				],
 				"behaviors": [
 					["push", ["RemoveBuffs"]]
