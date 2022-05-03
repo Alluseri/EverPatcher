@@ -42,5 +42,58 @@
 				"abilityEffect": ["set", "MidPoison1"]
 			}
 		}
+	},
+	"ClientConfig": {
+		"Config": {
+			"ABTest": {
+				"ClientVariants": ["set", {
+					"A": {
+						"TutorialSkippable": true,
+						"AutoFillLineup": true,
+						"Joystick_Active": false,
+						"AutoWalk_Active": true,
+						"BattleOptionsAvailable": true,
+						"OptimizeLineupButton": true,
+						"BattleOptionsOnByDefault": true
+					},
+					"B": {
+						"TutorialSkippable": true,
+						"AutoFillLineup": true,
+						"Joystick_Active": false,
+						"AutoWalk_Active": true,
+						"BattleOptionsAvailable": true,
+						"OptimizeLineupButton": true,
+						"BattleOptionsOnByDefault": true
+					},
+					"C": {
+						"TutorialSkippable": true,
+						"AutoFillLineup": true,
+						"Joystick_Active": false,
+						"AutoWalk_Active": true,
+						"BattleOptionsAvailable": true,
+						"OptimizeLineupButton": true,
+						"BattleOptionsOnByDefault": true
+					},
+					"D": {
+						"TutorialSkippable": true,
+						"AutoFillLineup": true,
+						"Joystick_Active": false,
+						"AutoWalk_Active": true,
+						"BattleOptionsAvailable": true,
+						"OptimizeLineupButton": true,
+						"BattleOptionsOnByDefault": true
+					},
+					"E": {
+						"TutorialSkippable": true,
+						"AutoFillLineup": true,
+						"Joystick_Active": false,
+						"AutoWalk_Active": true,
+						"BattleOptionsAvailable": true,
+						"OptimizeLineupButton": true,
+						"BattleOptionsOnByDefault": true
+					}
+				}]
+			}
+		}
 	}
 }
