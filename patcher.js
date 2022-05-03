@@ -37,7 +37,7 @@ function runRecursivePatches(content, patch, chain) {
 			var resx = patch[xk];
 			if (resx[0] == "set") {
 				setByChain(content, chcl, resx[1]);
-				console.log(">>> Applied singular 'set' patch to "+xk);
+				console.log(">> Applied singular 'set' patch to "+xk);
 			} else {
 				var og = getByChain(content, chcl);
 				for (var res_ in resx) {
@@ -81,7 +81,7 @@ function runRecursivePatches(content, patch, chain) {
 						}
 						break;
 					}
-					console.log(">>> Applied '"+res[0]+"' patch to "+xk);
+					console.log(">> Applied '"+res[0]+"' patch to "+xk);
 				}
 			}
 		}
@@ -91,13 +91,13 @@ function runRecursivePatches(content, patch, chain) {
 for (var file in __PATCHES) {
 	var patches = __PATCHES[file];
 	if (!file.endsWith(".json")) file = file + ".json";
-	var fileJsonContent = JSON.parse(fs.readFileSync(file, "utf8").toString());
-	console.log("Imported "+file+" successfully.");
+	try {
+		var fileJsonContent = JSON.parse(fs.readFileSync(file, "utf8").toString());
+		console.log("> Imported "+file+" successfully.");
+	} catch { continue; }
 	var backupFileName = "UNPATCHED_"+file;
 	fs.writeFileSync(backupFileName, JSON.stringify(fileJsonContent, null, "\t"));
-	console.log("Wrote a backup to "+backupFileName+".");
 	runRecursivePatches(fileJsonContent, patches, []);
-	console.log("Patched "+file+" successfully, saving...");
+	console.log(">>> Patched "+file+" successfully, saving...");
 	fs.writeFileSync(file, JSON.stringify(fileJsonContent, null, "\t"));
-	console.log("Saved "+file+" successfully!");
 }
